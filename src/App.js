@@ -5,6 +5,7 @@ import shortid from 'shortid'
 function App(){
     const[task, setTask] = useState("")
     const[tasks, setTasks] = useState([])
+
     const addTask = (e)=>{
         e.preventDefault()
         if(isEmpty(task)){
@@ -17,7 +18,7 @@ function App(){
             name: task
         }
 
-        setTask([...task, newTask])
+        setTasks([...tasks, newTask])
         setTask("")
         }
 
@@ -30,9 +31,8 @@ function App(){
                 <div className="col-8">
                     <h4 className="text-center">Lista de Tareas</h4>
                     <ul className="list-group">
-
-                        {
-                          tasks.map((task)=>(   
+                    {
+                        tasks.map((task)=>(   
                         <li className="list-group-item" key={task.id}>
                             <span className="lead">{task.name}</span>
                             <button className="btn btn-danger btn-sm float-right mx-2">Eliminar</button>
@@ -45,7 +45,7 @@ function App(){
                 </div>
                 <div className="col-4">
                 <h4 className="text-center">Formulario</h4>
-                <form onSubmit={addTask}>
+                <form onSubmit={addTask}>   
                     <input
                     type="text"
                     className="form-control mb-2"
